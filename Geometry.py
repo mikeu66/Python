@@ -121,26 +121,21 @@ class Sphere (object):
     Zmax = self.z + self.radius
     Zmin = self.z - self.radius
 
-    # print(f"X: ({Xmin},{Xmax}); Y: ({Ymin},{Ymax}); Z: ({Zmin},{Zmax})") # DEBUGGING. REMOVE LATER 9:06 PM
-    # print(f"Point: ({p.x},{p.y},{p.z})")
+  
     return(p.distance(self.center) < self.radius)
-    #return (Xmin<p.x<Xmax and Ymin<p.y<Ymax and Zmin<p.z<Zmax) # REMOVED EXTRANEOUS "if-else" STATEMENTS, JUST RETURN BOOLEAN 6/19 8:53 PM
 
   # determine if another Sphere is strictly inside this Sphere
   # other is a Sphere object
   # returns a Boolean
   def is_inside_sphere (self, other):
       other_sphere_points_lst = find_points_sphere(other)
-    #   print("List of points is: ", other_sphere_points_lst)
       condition = True
       for i in range(0, 6):
         sphere_point = other_sphere_points_lst[i]
         sphere_point = Point(sphere_point[0],sphere_point[1],sphere_point[2])
-        # print("Sphere point to check is: ", sphere_point)
         if not self.is_inside_point(sphere_point):
             condition = False
             break
-    #   print("This is: ",condition)
       return condition
 
   # determine if another Sphere is strictly outside this Sphere
@@ -148,16 +143,13 @@ class Sphere (object):
   # returns a Boolean
   def is_outside_sphere (self, other):
       other_sphere_points_lst = find_points_sphere(other)
-    #   print("List of points is: ", other_sphere_points_lst)
       condition = True
       for i in range(0, 6):
         sphere_point = other_sphere_points_lst[i]
         sphere_point = Point(sphere_point[0],sphere_point[1],sphere_point[2])
-        # print("Sphere point to check is: ", sphere_point)
         if self.is_inside_point(sphere_point):
             condition = False
             break
-    #   print("This is: ",condition)
       return condition
 
   # determine if a Cube is strictly inside this Sphere
@@ -167,30 +159,24 @@ class Sphere (object):
   # returns a Boolean
   def is_inside_cube (self, a_cube):
       other_cube_points_lst = find_points_cube(a_cube)
-    #   print("List of points is: ", other_cube_points_lst)
       condition = True
       for i in range(0, 8):
         cube_point = other_cube_points_lst[i]
         cube_point = Point(cube_point[0],cube_point[1],cube_point[2])
-        # print("Cube point to check is: ", cube_point)
         if not self.is_inside_point(cube_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   def is_outside_cube (self, a_cube):
       other_cube_points_lst = find_points_cube(a_cube)
-    #   print("List of points is: ", other_cube_points_lst)
       condition = True
       for i in range(0, 8):
         cube_point = other_cube_points_lst[i]
         cube_point = Point(cube_point[0],cube_point[1],cube_point[2])
-        # print("Cube point to check is: ", cube_point)
         if self.is_inside_point(cube_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
 
@@ -199,16 +185,13 @@ class Sphere (object):
   # returns a Boolean
   def is_inside_cyl (self, a_cyl): # I corrected your code
       other_cyl_points_lst = find_points_cyl(a_cyl)
-    #   print("List of points is: ", other_cyl_points_lst)
       condition = True
       for i in range(0, 8):
         cyl_point = other_cyl_points_lst[i]
         cyl_point = Point(cyl_point[0],cyl_point[1],cyl_point[2])
-        # print("Cyl point to check is: ", cyl_point)
         if not self.is_inside_point(cyl_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   # determine if 
@@ -285,16 +268,13 @@ class Cube (object):
   # returns a Boolean
   def is_inside_sphere (self, a_sphere):
       other_sphere_points_lst = find_points_sphere(a_sphere)
-    #   print("List of points is: ", other_sphere_points_lst)
       condition = True
       for i in range(0, 6):
         sphere_point = other_sphere_points_lst[i]
         sphere_point = Point(sphere_point[0],sphere_point[1],sphere_point[2])
-        # print("Sphere point to check is: ", sphere_point)
         if not self.is_inside_point(sphere_point):
             condition = False
             break
-    #   print("This is: ",condition)
       return condition
 
   # determine if another Cube is strictly inside this Cube
@@ -302,30 +282,24 @@ class Cube (object):
   # returns a Boolean
   def is_inside_cube (self, other):
       other_cube_points_lst = find_points_cube(other)
-    #   print("List of points is: ", other_cube_points_lst)
       condition = True
       for i in range(0, 8):
         cube_point = other_cube_points_lst[i]
         cube_point = Point(cube_point[0],cube_point[1],cube_point[2])
-        # print("Cube point to check is: ", cube_point)
         if not self.is_inside_point(cube_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   def is_outside_cube (self, a_cube):
       other_cube_points_lst = find_points_cube(a_cube)
-    #   print("List of points is: ", other_cube_points_lst)
       condition = True
       for i in range(0, 8):
         cube_point = other_cube_points_lst[i]
         cube_point = Point(cube_point[0],cube_point[1],cube_point[2])
-        # print("Cube point to check is: ", cube_point)
         if self.is_inside_point(cube_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   # determine if a Cylinder is strictly inside this Cube
@@ -333,16 +307,13 @@ class Cube (object):
   # returns a Boolean
   def is_inside_cylinder (self, a_cyl):
       other_cyl_points_lst = find_points_cyl(a_cyl)
-    #   print("List of points is: ", other_cyl_points_lst)
       condition = True
       for i in range(0, 8):
         cyl_point = other_cyl_points_lst[i]
         cyl_point = Point(cyl_point[0],cyl_point[1],cyl_point[2])
-        # print("Cyl point to check is: ", cyl_point)
         if not self.is_inside_point(cyl_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   # determine if another Cube intersects this Cube
@@ -427,16 +398,13 @@ class Cylinder (object):
   # returns a Boolean
   def is_inside_sphere (self, a_sphere): 
       other_sphere_points_lst = find_points_sphere(a_sphere)
-    #   print("List of points is: ", other_sphere_points_lst)
       condition = True
       for i in range(0, 6):
         sphere_point = other_sphere_points_lst[i]
         sphere_point = Point(sphere_point[0],sphere_point[1],sphere_point[2])
-        # print("Sphere point to check is: ", sphere_point)
         if not self.is_inside_point(sphere_point):
             condition = False
             break
-    #   print("This is: ",condition)
       return condition
 
   # determine if a Cube is strictly inside this Cylinder
@@ -446,16 +414,13 @@ class Cylinder (object):
   # returns a Boolean
   def is_inside_cube (self, a_cube): 
       other_cube_points_lst = find_points_cube(a_cube)
-    #   print("List of points is: ", other_cube_points_lst)
       condition = True
       for i in range(0, 8):
         cube_point = other_cube_points_lst[i]
         cube_point = Point(cube_point[0],cube_point[1],cube_point[2])
-        # print("Cube point to check is: ", cube_point)
         if not self.is_inside_point(cube_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   # determine if another Cylinder is strictly inside this Cylinder
@@ -463,16 +428,13 @@ class Cylinder (object):
   # returns a Boolean
   def is_inside_cylinder (self, other): 
       other_cyl_points_lst = find_points_cyl(other)
-    #   print("List of points is: ", other_cyl_points_lst)
       condition = True
       for i in range(0, 8):
         cyl_point = other_cyl_points_lst[i]
         cyl_point = Point(cyl_point[0],cyl_point[1],cyl_point[2])
-        # print("Cyl point to check is: ", cyl_point)
         if not self.is_inside_point(cyl_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   # determine if another Cylinder is strictly outside this Cylinder
@@ -480,16 +442,13 @@ class Cylinder (object):
   # returns a Boolean
   def is_outside_cylinder (self, other): 
       other_cyl_points_lst = find_points_cyl(other)
-    #   print("List of points is: ", other_cyl_points_lst)
       condition = True
       for i in range(0, 8):
         cyl_point = other_cyl_points_lst[i]
         cyl_point = Point(cyl_point[0],cyl_point[1],cyl_point[2])
-        # print("Cyl point to check is: ", cyl_point)
         if self.is_inside_point(cyl_point):
             condition = False
             break
-    #   print("This is: ", condition)
       return condition
 
   # determine if another Cylinder intersects this Cylinder
@@ -512,10 +471,6 @@ def main():
 
     p2 = Point(2.0, 8.0, 1.0)
     sphereA2= Sphere(2.0, 7.0, 3.0, 8.0)
-    #print(sphereA.circumscribe_cube())
-    #print(sphereA2.is_inside_point(p2))
-    #print(p2.distance(sphereA2.center)<sphereA2.radius)
-    #print(sphereA2.radius)
     if p.distance(Point()) > q.distance(Point()):
         print("Distance of Point p from the origin is greater than the distance of Point q from the origin")
     else:
